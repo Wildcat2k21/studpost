@@ -1,0 +1,35 @@
+version: '3.9'
+
+services:
+  postgres:
+    # База данных
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: STUDPOSTS
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: qwerty09876
+    ports:
+    - "5432:5432"
+    volumes:
+      - ./initDatabase/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - db-data:/var/lib/postgresql/data
+    restart: always
+
+  # Пайтон приложение
+  studposts-back-app:
+    image: studpost-app:latest
+    ports:
+    - "5000:5000"
+    environment:
+      DATABASE_URL: postgresql://postgres:qwerty09876@postgres/STUDPOSTS
+    restart: always
+
+  # nginx с готовой конфигурацией и ресурсами
+  studpost-nginx-app:
+    image: studpost-nginx:latest
+    ports:
+    - "80:80"
+    restart: always
+
+volumes:
+  db-data:

@@ -1,0 +1,15 @@
+.git
+.gitognore
+.idea
+__pycache__
+
+compose.yml
+create-image.bat
+start-compose.bat
+
+/initDatabase
+/Vue
+/unitTests
+/nginx
+/k3s
+/photos

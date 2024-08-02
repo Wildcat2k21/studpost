@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python-app
+  template:
+    metadata:
+      labels:
+        app: python-app
+    spec:
+      containers:
+      - name: python-app
+        image: studpost-app:latest
+        ports:
+        - containerPort: 5000
+        imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        volumeMounts:
+        - name: logs
+          mountPath: /app/logs
+        - name: sources
+          mountPath: /app/sources
+      volumes:
+      - name: logs
+        persistentVolumeClaim:
+          claimName: python-logs-pvc
+      - name: sources
+        persistentVolumeClaim:
+          claimName: python-sources-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: python-service
+spec:
+  selector:
+    app: python-app
+  ports:
+  - protocol: TCP
+    port: 5000
+    targetPort: 5000
+  type: ClusterIP
