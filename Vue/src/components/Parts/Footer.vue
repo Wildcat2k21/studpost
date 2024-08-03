@@ -57,7 +57,7 @@ export default {
 
     .support
     {
-        width: 30%;
+        width: 50%;
         height: 23%;
         display: flex;
         justify-content: space-between;
@@ -68,6 +68,11 @@ export default {
     {
         width: 25%;
         height: 100%;
+    }
+
+    .support> img:nth-child(2)
+    {
+        width: 43%;
     }
 
     .support> img:nth-child(3)

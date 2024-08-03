@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="select"> 
-            <img src="@/assets/header/dropout.svg"/><div ref="select">Сначало свежие</div>
+            <img src="@/assets/header/dropout.svg"/><div ref="select">Сначала свежие</div>
         </div>
         <div class="select-list">
             <div class="select-elem" @click="select($event, 'disc')">Сначала свежие</div>

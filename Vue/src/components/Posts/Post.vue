@@ -27,7 +27,7 @@
         </div>
     </div>
     <div class="sort">
-        Сортировать по: <my-select class="select-main" @select="filterBy"></my-select>
+        Сортировать: <my-select class="select-main" @select="filterBy"></my-select>
     </div>
     <div class="create-comments">
         <my-input placeholder="Поделитесь своим мнением...." class="input-createcomment" v-model="commentContent" :limit="5000" ref="input"></my-input>
