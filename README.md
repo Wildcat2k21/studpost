@@ -1,4 +1,4 @@
-# STUDPOSTS-server
+# STUDPOSTS
 
 ![studposts.svg](photos/studposts.svg)
 
